@@ -21,9 +21,8 @@ jobs:
          - name: Show version number
            run: echo "${{ steps.package-json-endpoint.outputs.endpoint }}"
 
-    steps:
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: latest 
-          prerelease: false
+         - uses: "marvinpinto/action-automatic-releases@latest"
+           with:
+             repo_token: "${{ secrets.GITHUB_TOKEN }}"
+             automatic_release_tag: latest 
+             prerelease: false
