@@ -13,14 +13,17 @@ jobs:
     name: "Release"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: actions/checkout@v1
-      - name: Read package.json
-        uses: dutscher/read-package-json-endpoint-actions@v1.33.7
-        id: package-json-endpoint
+         - uses: actions/checkout@v1
+         - name: Read package.json
+           uses: dutscher/read-package-json-endpoint-actions@v1.33.7
+           id: package-json-endpoint
+   
+         - name: Show version number
+           run: echo "${{ steps.package-json-endpoint.outputs.endpoint }}"
 
-      - name: Auto-publish release notes with a tag that mirrors the version number of the package.json
+    steps:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "${{ steps.package-json-endpoint.outputs.endpoint }}" 
+          automatic_release_tag: latest 
           prerelease: false
