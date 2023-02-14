@@ -29,7 +29,7 @@ jobs:
            with:
              path: aarondarwish/learn-github-actions
              repo_token: "${{ secrets.GITHUB_TOKEN }}"
-            # automatic_release_tag: ${{ steps.package-version.outputs.current-version}} 
+             automatic_release_tag: ${{ steps.package-version.outputs.current-version}} 
              run: echo ${{ steps.package-version.outputs.current-version}} 
-             automatic_release_tag: latest 
+            #  automatic_release_tag: latest 
              prerelease: false
