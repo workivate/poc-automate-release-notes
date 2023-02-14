@@ -15,6 +15,12 @@ jobs:
     steps:
            #         - name: Show version number
            #           run: echo "${{ steps.package-json-endpoint.outputs.endpoint }}"
+
+         - name: "Checkout repository"
+           uses: actions/checkout@v2
+           with:
+            fetch-depth: 0
+
          - id: package-version
            uses: "martinbeentjes/npm-get-version-action@main"
          - uses: "marvinpinto/action-automatic-releases@latest"
