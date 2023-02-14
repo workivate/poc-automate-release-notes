@@ -21,8 +21,10 @@ jobs:
            with:
             fetch-depth: 0
 
-         - id: package-version
+         - name: "Get package version"
+           id: package-version
            uses: "martinbeentjes/npm-get-version-action@main"
+         
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
              path: aarondarwish/learn-github-actions
