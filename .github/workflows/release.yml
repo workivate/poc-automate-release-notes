@@ -19,7 +19,7 @@ jobs:
            uses: "martinbeentjes/npm-get-version-action@main"
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
-             path: aarondarwish/learn-github-action
+             path: aarondarwish/learn-github-actions
              repo_token: "${{ secrets.GITHUB_TOKEN }}"
             # automatic_release_tag: ${{ steps.package-version.outputs.current-version}} 
              run: echo ${{ steps.package-version.outputs.current-version}} 
