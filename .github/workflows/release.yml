@@ -15,7 +15,8 @@ jobs:
     steps:
            #         - name: Show version number
            #           run: echo "${{ steps.package-json-endpoint.outputs.endpoint }}"
-         - uses: "martinbeentjes/npm-get-version-action@main"
+         - id: package-version
+           uses: "martinbeentjes/npm-get-version-action@main"
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
              repo_token: "${{ secrets.GITHUB_TOKEN }}"
