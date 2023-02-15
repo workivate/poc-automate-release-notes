@@ -22,7 +22,7 @@ jobs:
            id: package-version
            uses: "martinbeentjes/npm-get-version-action@main"
          
-         - uses: "marvinpinto/action-automatic-releases@latest"
+         - uses: "aarondarwish/action-automatic-releases@1.0.1"
            with:
              path: aarondarwish/learn-github-actions
              repo_token: "${{ secrets.GITHUB_TOKEN }}"
