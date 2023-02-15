@@ -1,2 +1,2 @@
 # Learn-github-actions
-Implementing Github Actions.
+Implementing Github Actions that reads a `package.json` value.
