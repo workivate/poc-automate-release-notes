@@ -1,2 +1,2 @@
-# learn-github-actions
-Learning Github Actions.
+# Learn-github-actions
+Implementing Github Actions.
