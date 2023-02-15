@@ -22,7 +22,7 @@ jobs:
            id: package-version
            uses: "martinbeentjes/npm-get-version-action@main"
          
-         - uses: "aarondarwish/github-autorelease-notes@latest"
+         - uses: "aarondarwish/github-autorelease-notes@1.0.1"
            with:
              path: aarondarwish/learn-github-actions
              repo_token: "${{ secrets.GITHUB_TOKEN }}"
