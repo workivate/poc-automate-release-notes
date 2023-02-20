@@ -1,6 +1,6 @@
 {
   "name": "learn-github-actions",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Learning Github Actions.",
   "main": "index.js",
   "scripts": {
