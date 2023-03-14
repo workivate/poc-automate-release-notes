@@ -23,10 +23,10 @@ jobs:
          - name: "Get package version"
            id: package-version
            uses: "martinbeentjes/npm-get-version-action@main"
-           if: ${{ RELEASE_TAG == steps.package-version.outputs.current-version }}
          
          - uses: "marvinpinto/action-automatic-releases@latest"
            #- uses: "aarondarwish/github-autorelease-notes@1.0.1"
+           if: ${{ RELEASE_TAG == steps.package-version.outputs.current-version }}
            with:
              path: aarondarwish/learn-github-actions
              repo_token: "${{ secrets.GITHUB_TOKEN }}"
