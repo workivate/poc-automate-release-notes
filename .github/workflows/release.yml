@@ -27,7 +27,7 @@ jobs:
            with:
              path: aarondarwish/learn-github-actions
              repo_token: "${{ secrets.GITHUB_TOKEN }}"
-             run: echo "This is the current release value: ${{ github.event.release.tag_name }}"
+             run: echo "${{ github.event.release.tag_name }}"
              automatic_release_tag: ${{ steps.package-version.outputs.current-version}} 
              # run: echo ${{ steps.package-version.outputs.current-version}} 
              prerelease: false
