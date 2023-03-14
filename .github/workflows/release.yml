@@ -25,11 +25,10 @@ jobs:
            uses: "martinbeentjes/npm-get-version-action@main"
 
          - name: Fail if the tag release value is equivalent to the package.json version value
-           if: ${{ github.event.release.tag_name == steps.package-version.outputs.current-version }}
+           if: ${{ github.event.release.tag_name }} == ${{ steps.package-version.outputs.current-version }}
            run: exit 1
 
          - uses: "marvinpinto/action-automatic-releases@latest"
-           #- uses: "aarondarwish/github-autorelease-notes@1.0.1"
            with:
              path: aarondarwish/learn-github-actions
              repo_token: "${{ secrets.GITHUB_TOKEN }}"
