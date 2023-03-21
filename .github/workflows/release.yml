@@ -24,7 +24,8 @@ jobs:
            id: package-version
            uses: "martinbeentjes/npm-get-version-action@main"
 
-         - name: Fail if the tag release value is equivalent to the package.json version value
+         - name: Compare the tag release value to the package.json version value 
+           run: | 
             verlte() {
                 [  "$1" = "`echo -e "$1\n$2" | sort -V | head -n1`" ]
             }
@@ -35,6 +36,7 @@ jobs:
 
             verlt ${{ github.event.release.tag_name }} ${{ steps.package-version.outputs.current-version }} && continue = "false" || continue = "true"
 
+         - name: Fail if the tag release value is equivalent to the package.json version value
            if: ${{ steps.continue }} == "true"
            run: exit 1
 
