@@ -36,7 +36,7 @@ jobs:
                 [ "$1" = "$2" ] && return 1 || varcompe $1 $2
             }
 
-            echo "COMPARE_RESULT=(vercomp ${{ github.event.release.tag_name }} ${{ steps.package-version.outputs.current-version }} && 1 || 0 )" >> $GITHUB_OUTPUT
+            echo "COMPARE_RESULT=$(vercomp ${{ github.event.release.tag_name }} ${{ steps.package-version.outputs.current-version }} && 1 || 0 )" >> $GITHUB_OUTPUT
 
          - name: Fail if the tag release value is equivalent to the package.json version value
            if: ${{ steps.compare-version.outputs.COMPARE_RESULT }} == "1"
