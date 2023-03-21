@@ -42,8 +42,8 @@ jobs:
            if: ${{ steps.compare-version.outputs.COMPARE_RESULT }} == "1"
            shell: bash
            run: |
-             echo "COMPARE_RESULT = " $COMPARE_RESULT
-             echo "RELEASE_TAG = " ${{ github.event.release.tag_name }}
+             echo "COMPARE_RESULT = " ${{ steps.compare-version.outputs.COMPARE_RESULT }}
+             echo "RELEASE_TAG = " ${{ steps.github.event.release.tag_name }}
              echo "PACKAGE_VERSION = " ${{ steps.package-version.outputs.current-version }}
              echo ${{ steps.compare-version.outputs.COMPARE_RESULT }} && exit 1
 
