@@ -26,8 +26,6 @@ jobs:
 
          - name: Compare the tag release value to the package.json version value
            id: compare-version
-           env: 
-            continue: "true"
            run: | 
             verlte() {
                 [  "$1" = "`echo -e "$1\n$2" | sort -V | head -n1`" ]
