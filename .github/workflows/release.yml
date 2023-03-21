@@ -35,7 +35,7 @@ jobs:
 
             verlt ${{ github.event.release.tag_name }} ${{ steps.package-version.outputs.current-version }} && continue = "false" || continue = "true"
 
-           if: ${{ steps.continue }} == "false"
+           if: ${{ steps.continue }} == "true"
            run: exit 1
 
          - uses: "marvinpinto/action-automatic-releases@latest"
