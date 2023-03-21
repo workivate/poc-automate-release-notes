@@ -39,7 +39,7 @@ jobs:
 
             verlt ${{ github.event.release.tag_name }} ${{ steps.package-version.outputs.current-version }} && $continue = "false" || $continue = "true"
             
-            echo continue >> $GITHUB_OUTPUT
+            echo $continue >> $GITHUB_OUTPUT
 
          - name: Fail if the tag release value is equivalent to the package.json version value
            if: ${{ steps.compare-version.outputs.continue }} == "false"
