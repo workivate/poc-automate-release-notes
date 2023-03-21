@@ -38,11 +38,15 @@ jobs:
 
             echo "COMPARE_RESULT=$(vercomp ${{ github.event.release.tag_name }} ${{ steps.package-version.outputs.current-version }} && echo 1 || echo 0 )" >> $GITHUB_OUTPUT
 
+            echo "COMPARE_RESULT = " $COMPARE_RESULT
+            echo "RELEASE_TAG = " ${{ github.event.release.tag_name }}
+            echo "PACKAGE_VERSION = " ${{ steps.package-version.outputs.current-version }}
+
          - name: Fail if the tag release value is equivalent to the package.json version value
            if: ${{ steps.compare-version.outputs.COMPARE_RESULT }} == "1"
            shell: bash
            run: |
-             echo ${{ steps.compare-version.outputs.COMPARE_RESULT }}
+             echo ${{ steps.compare-version.outputs.COMPARE_RESULT }} && exit 1
 
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
