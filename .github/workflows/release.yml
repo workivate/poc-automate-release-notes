@@ -28,11 +28,11 @@ jobs:
            id: compare-version
            shell: bash
            run: |
-            varcompe() {
+            vercompe() {
                 [  "$1" = "`echo -e "$1\n$2" | sort -V | head -n1`" ]
             }
             
-            varcomp() {
+            vercomp() {
                 [ "$1" = "$2" ] && return 1 || varcompe $1 $2
             }
 
