@@ -39,9 +39,8 @@ jobs:
 
          - name: Fail if the tag release value is equivalent to the package.json version value
            if: ${{ steps.compare-version.continue }} == "true"
-           run: |
-            echo ${{ steps.compare-version.continue }}
-            
+           run: echo ${{ steps.compare-version.continue }}
+
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
              path: aarondarwish/learn-github-actions
