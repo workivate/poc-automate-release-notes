@@ -33,7 +33,7 @@ jobs:
             }
             
             vercomp() {
-                [ "$1" = "$2" ] && return 1 || varcompe $1 $2
+                [ "$1" = "$2" ] && return 1 || vercompe $1 $2
             }
 
             echo "COMPARE_RESULT=$(vercomp ${{ github.event.release.tag_name }} ${{ steps.package-version.outputs.current-version }} && echo 0 || echo 1 )" >> $GITHUB_OUTPUT
