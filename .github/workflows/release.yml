@@ -42,7 +42,7 @@ jobs:
            if: ${{ steps.compare-version.outputs.COMPARE_RESULT }} == 1
            shell: bash
            run: |
-             echo ${{ steps.compare-version.outputs.COMPARE_RESULT }}
+             echo ${{ steps.compare-version.outputs.COMPARE_RESULT }} && exit 1
 
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
