@@ -38,10 +38,12 @@ jobs:
             }
 
             verlt ${{ github.event.release.tag_name }} ${{ steps.package-version.outputs.current-version }} && $continue = "false" || $continue = "true"
+            
+            echo continue >> $GITHUB_OUTPUT
 
          - name: Fail if the tag release value is equivalent to the package.json version value
-           if: ${{ steps.compare-version.continue }} == "true"
-           run: exit 1
+           if: ${{ steps.compare-version.outputs.continue }} == "false"
+           run: echo {{ steps.compare-version.outputs.continue }} && exit 1
 
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
