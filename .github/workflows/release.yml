@@ -26,16 +26,7 @@ jobs:
            id: compare-version
            shell: bash
            run: |
-             echo "COMPARE_RESULT=$(./comp_ver.sh ${{ github.event.release.tag_name }} ${{ steps.package-version.outputs.current-version }})" >> $GITHUB_OUTPUT
-         
-         - name: Fail if the tag release value is equivalent to the package.json version value
-           if: steps.compare-version.outputs.COMPARE_RESULT == 'ERROR'
-           shell: bash
-           run: |
-             echo "FAILED"
-             echo ${{ steps.compare-version.outputs.COMPARE_RESULT }}
-              exit 1
-
+             ./comp_ver.sh ${{ github.event.release.tag_name }} ${{ steps.package-version.outputs.current-version }}
 
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
