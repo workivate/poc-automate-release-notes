@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - main
-  release:
 
 # Automatically create a GitHub Release
 jobs:
@@ -20,21 +19,26 @@ jobs:
             fetch-depth: 0
 
          - name: "Get package version"
-           
            uses: "martinbeentjes/npm-get-version-action@main"
+
+         - name: Get latest tag (release)
+           id: latest_tag
+           shell: bash
+           run: |
+             echo "TAG=$(git tag -l '${{ steps.version_prefix.outputs.PREFIX }}*' | sort -V | tail -1)" >> $GITHUB_OUTPUT
 
          - name: "Compare the tag release value to the package.json version value, fail the workflow if the release is newer"
            id: compare-version
            shell: bash
            run: |
-            if [ "$(printf '%s\n' "${{ steps.package-version.outputs.current-version }}" "${{ github.event.release.tag_name }}" | sort -V | head -n1)" = "${{ steps.package-version.outputs.current-version }}" ]; then
+            if [ "$(printf '%s\n' "${{ steps.package-version.outputs.current-version }}" "$TAG" | sort -V | head -n1)" = "${{ steps.package-version.outputs.current-version }}" ]; then
                 echo "ERROR"
                 exit 1
             else
                 echo "OK"
                 exit 0
             fi
-             echo "Comparing [${{ github.event.release.tag_name }}] to [${{ steps.package-version.outputs.current-version }}]"
+             echo "Comparing [$TAG] to [${{ steps.package-version.outputs.current-version }}]"
 
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
