@@ -6,6 +6,8 @@ on:
   push:
     branches:
       - main
+  release:
+    types: [published, prereleased]
 
 # Automatically create a GitHub Release
 jobs:
@@ -19,7 +21,7 @@ jobs:
             fetch-depth: 0
 
          - name: "Get package version"
-           id: package-version
+           
            uses: "martinbeentjes/npm-get-version-action@main"
 
          - name: "Compare the tag release value to the package.json version value, fail the workflow if the release is newer"
