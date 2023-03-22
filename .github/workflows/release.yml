@@ -33,7 +33,7 @@ jobs:
                 echo "OK"
                 exit 0
             fi
-             echo "Comparing ${{ github.event.release.tag_name }} to ${{ steps.package-version.outputs.current-version }}"
+             echo "Comparing [${{ github.event.release.tag_name }}] to [${{ steps.package-version.outputs.current-version }}]"
 
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
