@@ -19,6 +19,7 @@ jobs:
             fetch-depth: 0
 
          - name: "Get package version"
+           id: package-version
            uses: "martinbeentjes/npm-get-version-action@main"
 
          - name: Get latest tag (release)
