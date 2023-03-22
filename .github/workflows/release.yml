@@ -31,14 +31,14 @@ jobs:
            id: compare-version
            shell: bash
            run: |
-            if [ "$(printf '%s\n' "${{ steps.package-version.outputs.current-version }}" "$TAG" | sort -V | head -n1)" = "${{ steps.package-version.outputs.current-version }}" ]; then
+            if [ "$(printf '%s\n' "${{ steps.package-version.outputs.current-version }}" "${{ steps.latest_tag.outputs.TAG }}" | sort -V | head -n1)" = "${{ steps.package-version.outputs.current-version }}" ]; then
                 echo "ERROR"
                 exit 1
             else
                 echo "OK"
                 exit 0
             fi
-             echo "Comparing [$TAG] to [${{ steps.package-version.outputs.current-version }}]"
+             echo "Comparing [${{ steps.latest_tag.outputs.TAG }}] to [${{ steps.package-version.outputs.current-version }}]"
 
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
