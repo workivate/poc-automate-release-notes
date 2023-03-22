@@ -26,6 +26,7 @@ jobs:
            id: compare-version
            shell: bash
            run: |
+             echo "Comparing ${{ github.event.release.tag_name }} to ${{ steps.package-version.outputs.current-version }}"
              ./.github/scripts/comp_ver.sh ${{ github.event.release.tag_name }} ${{ steps.package-version.outputs.current-version }}
 
          - uses: "marvinpinto/action-automatic-releases@latest"
