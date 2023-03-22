@@ -26,8 +26,14 @@ jobs:
            id: compare-version
            shell: bash
            run: |
+            if [ "$(printf '%s\n' "${{ steps.package-version.outputs.current-version }}" "${{ github.event.release.tag_name }}" | sort -V | head -n1)" = "${{ steps.package-version.outputs.current-version }}" ]; then
+                echo "ERROR"
+                exit 1
+            else
+                echo "OK"
+                exit 0
+            fi
              echo "Comparing ${{ github.event.release.tag_name }} to ${{ steps.package-version.outputs.current-version }}"
-             ./.github/scripts/comp_ver.sh ${{ github.event }} ${{ steps.package-version.outputs.current-version }}
 
          - uses: "marvinpinto/action-automatic-releases@latest"
            with:
