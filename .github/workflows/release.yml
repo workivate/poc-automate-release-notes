@@ -32,10 +32,9 @@ jobs:
            id: compare-version
            shell: bash
            run: |
-            echo "Comparing [${{ steps.latest-version.outputs.tag }}] to [${{ steps.package-version.outputs.current-version }}]"
-            
             LATEST_VERSION=${{ steps.latest-version.outputs.tag }}
             PACKAGE_VERSION=${{ steps.package-version.outputs.current-version }}
+            echo "Comparing [$LATEST_VERSION] to [$PACKAGE_VERSION]]"
             
             LOWEST_VERSION=$(printf '%s\n' "$PACKAGE_VERSION" "$LATEST_VERSION" | sort -V | head -n1)
             
